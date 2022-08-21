@@ -119,15 +119,20 @@ _G.packer_plugins = {
     path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
+  marksman = {
+    loaded = true,
+    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/marksman",
+    url = "https://github.com/artempyanykh/marksman"
+  },
   neoformat = {
     loaded = true,
     path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
-  },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,

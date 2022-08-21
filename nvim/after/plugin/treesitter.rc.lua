@@ -27,6 +27,7 @@ ts.setup {
     "typescript",
     "java",
     "rust",
+    "markdown",
   },
   autotag = {
     enable = true,
