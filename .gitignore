@@ -1,0 +1,9 @@
+# OSX
+.DS_Store
+
+# Fish
+fish/config-local.fish
+fish/fish_variables
+
+# Copilot
+github-copilot/
