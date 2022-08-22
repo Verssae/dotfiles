@@ -2,7 +2,7 @@
 These are my dotfiles 😆
 
 ![screenshot](images/screenshot.png)
-
+(I recommend to change Github to dark theme. It looks better !)
 ## Shell setup (macOS)
 - [Fish Shell](https://github.com/fish-shell/fish-shell)
   - I use __fish__ instead of _zsh_.
@@ -48,7 +48,8 @@ brew install fish exa starship neovim
 Then override their configurations to dotfiles:
 ```fish
 cp -r dotfiles/ ~/.config/
-rm -r ~/.config/nvim/*.vim # remove exist *.vim configs 
+rm -r ~/.config/nvim/*.vim # remove exist *.vim configs
+rm -r ~/.config/nvim/after/plugin/*.rc.vim
 ```
 
 ### Install Plugins and Requirements
@@ -91,3 +92,4 @@ status --is-interactive; and pyenv virtualenv-init - | source
 ## To-do
 - [x] Describe full setup process for quick install for macOS
 - [ ] Support other OS platforms
+- [ ] Add Usage (alias, plugins, etc)
