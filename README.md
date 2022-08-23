@@ -18,7 +18,7 @@ These are my dotfiles 😆
   - I use [OneHalfDark](https://github.com/mbadolato/iTerm2-Color-Schemes) colorscheme.
 
 ## NeoVim setup
-My nvim setup is cloned from [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public) (This repo is very cool, thanks ! 🙏🙏🙏)
+My nvim setup is cloned from [craftzdog/dotfiles-public](https://github.com/craftzdog/dotfiles-public) (This repo is very cool, thanks !)
 
 The differences are:
 - [vscode.nvim](https://github.com/Mofiqul/vscode.nvim)
