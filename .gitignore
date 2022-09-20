@@ -5,8 +5,19 @@
 fish/config-local.fish
 fish/fish_variables
 
-# Copilot
-github-copilot/
-
-iterm2/
-
+# Other files 
+github-copilot
+.mono
+configstore
+functions
+gatsby
+gh
+iterm2
+jgit
+Microsoft\\VisualStudio\ Services
+NuGet
+raycast
+siyuan
+spotify-tui
+stetic
+xbuild

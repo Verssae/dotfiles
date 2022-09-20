@@ -43,4 +43,8 @@ packer.startup(function(use)
 
 	use "artempyanykh/marksman" -- Markdown LSP
 	use "iamcco/markdown-preview.nvim" -- Markdown Preview
+
+  use "RRethy/vim-illuminate" --Highlight other uses of word
+
+  use "mfussenegger/nvim-jdtls" -- Java LSP
 end)

@@ -11,6 +11,36 @@ vimcmd_replace_one_symbol = '[⋉](bold purple)'
 disabled = false
 # original symbole: ❯
 
+[hostname]
+ssh_only = true
+ssh_symbol = '🌐 '
+trim_at = '.'
+format = '[$ssh_symbol]($style)'
+style = 'green dimmed bold'
+disabled = false
+
+[username]
+format = '[$user]($style) at '
+style_root = 'red bold'
+style_user = 'yellow bold'
+show_always = false
+disabled = false
+
+[shlvl]
+threshold = 2
+format = '[$symbol$shlvl]($style)'
+symbol = '↕️  '
+repeat = false
+style = 'bold yellow'
+disabled = true
+
+[localip]
+ssh_only = true
+format = '[$localipv4]($style)'
+style = 'yellow bold'
+disabled = true
+
+
 [aws]
 symbol = "  "
 

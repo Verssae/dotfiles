@@ -93,7 +93,9 @@ nvim_lsp.pyright.setup {
 }
 
 -- Language: Markdown
-nvim_lsp.marksman.setup {}
+nvim_lsp.marksman.setup {
+  on_attach = on_attach,
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	underline = true,

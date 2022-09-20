@@ -18,3 +18,5 @@ if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
 end
 
+set -gx SWAP ~/.local/share/nvim/swap/
+alias rmswap="rm -r $SWAP/*.swp"
