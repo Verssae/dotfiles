@@ -49,6 +49,7 @@ require("bufferline").setup {
 		right_trunc_marker = "",
 		show_close_icon = false,
 		show_tab_indicators = true,
+  },
  	highlights = {
 		fill = {
 			fg = { attribute = "fg", highlight = "Normal" },
@@ -97,6 +98,4 @@ require("bufferline").setup {
 			bg = { attribute = "bg", highlight = "normal" },
 		},
 	},
-gatsby
-
->>>>>>> 7784098 (ignore some folders)}
+}
