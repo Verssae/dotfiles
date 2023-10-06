@@ -199,10 +199,30 @@ _G.packer_plugins = {
     path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-illuminate"] = {
     loaded = true,
     path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/Users/juhansae/.local/share/nvim/site/pack/packer/start/vimwiki",
+    url = "https://github.com/vimwiki/vimwiki"
   },
   ["vscode.nvim"] = {
     loaded = true,

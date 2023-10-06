@@ -58,7 +58,7 @@ protocol.CompletionItemKind = {
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Language: typescript
 nvim_lsp.tsserver.setup {
@@ -69,7 +69,7 @@ nvim_lsp.tsserver.setup {
 }
 
 -- Language: lua
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
 	on_attach = on_attach,
 	settings = {
 		Lua = {

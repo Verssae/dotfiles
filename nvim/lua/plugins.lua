@@ -47,4 +47,10 @@ packer.startup(function(use)
   use "RRethy/vim-illuminate" --Highlight other uses of word
 
   use "mfussenegger/nvim-jdtls" -- Java LSP
+
+  use "lervag/vimtex" -- LaTex
+  use "vimwiki/vimwiki" -- Wiki
+
+  use "tpope/vim-fugitive" -- Git 
+  use "tpope/vim-repeat" -- Repeat commands
 end)
