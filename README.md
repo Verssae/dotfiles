@@ -44,3 +44,7 @@ Set universal environment variables and generate symbolic links into `.config`
 ### copilot.vim
 
 [NvChad + Copilot](https://github.com/NvChad/NvChad/issues/2020#issuecomment-1691652333)
+
+```sh
+ln -s ~/dotfiles/nvim/lua/custom ~/.config/nvim/lua/custom
+```
