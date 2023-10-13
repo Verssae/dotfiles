@@ -1,7 +1,7 @@
 # Verssae's dotfiles
 My dotfiles for macOS
 
-## Prerequisites
+## Requirements
 ### Homebrew
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -40,3 +40,7 @@ Set universal environment variables and generate symbolic links into `.config`
 ```sh
 ./init_config.fish
 ```
+
+### copilot.vim
+
+[NvChad + Copilot](https://github.com/NvChad/NvChad/issues/2020#issuecomment-1691652333)
