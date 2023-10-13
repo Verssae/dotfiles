@@ -1,27 +1,2 @@
 # OSX
 .DS_Store
-
-# Fish
-fish/config-local.fish
-fish/fish_variables
-
-# Other files 
-github-copilot
-.mono
-configstore
-functions
-gatsby
-gh
-iterm2
-jgit
-Microsoft\\VisualStudio\ Services
-NuGet
-raycast
-siyuan
-spotify-tui
-stetic
-xbuild
-evcert
-StardewValley/
-htop/
-revChatGPT/
