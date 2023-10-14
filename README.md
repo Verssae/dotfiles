@@ -48,3 +48,7 @@ Set universal environment variables and generate symbolic links into `.config`
 ```sh
 ln -s ~/dotfiles/nvim/lua/custom ~/.config/nvim/lua/custom
 ```
+
+### Troubleshooting
+
+- poetry fish compeletion error: [GitHub Issue](https://github.com/python-poetry/poetry/issues/5929#issuecomment-1533231130)
