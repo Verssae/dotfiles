@@ -32,18 +32,15 @@ setup_gitconfig () {
   then
     info 'setup gitconfig'
 
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
-    fi
-
     user ' - What is your github author name?'
     read -e git_authorname
     user ' - What is your github author email?'
     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    # 기본 신원만 생성한다. org별 계정 전환(includeIf)이 필요하면
+    # git/gitconfig.local.symlink.example 참고.
+    printf '# 신원 정보 — repo에 커밋되지 않음 (.gitignore)\n[user]\n\tname = %s\n\temail = %s\n' \
+      "$git_authorname" "$git_authoremail" > git/gitconfig.local.symlink
 
     success 'gitconfig'
   fi
@@ -137,14 +134,41 @@ install_dotfiles () {
   done
 }
 
+# config/<앱> → ~/.config/<앱> 심링크
+setup_config () {
+  info 'linking ~/.config'
+
+  local overwrite_all=false backup_all=false skip_all=false
+  local src dst
+
+  mkdir -p "$HOME/.config"
+
+  for src in "$DOTFILES_ROOT"/config/*
+  do
+    dst="$HOME/.config/$(basename "$src")"
+
+    # herdr는 세션/로그가 ~/.config/herdr에 로컬로 쌓이므로
+    # 디렉토리 전체가 아니라 config.toml만 링크한다
+    if [ "$(basename "$src")" == "herdr" ]
+    then
+      mkdir -p "$dst"
+      link_file "$src/config.toml" "$dst/config.toml"
+    else
+      link_file "$src" "$dst"
+    fi
+  done
+}
+
 setup_gitconfig
 install_dotfiles
+setup_config
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
+  # 파이프로 감싸면 dot의 실패가 while의 종료 코드에 가려지므로 직접 실행한다
+  if "$DOTFILES_ROOT/bin/dot"
   then
     success "dependencies installed"
   else

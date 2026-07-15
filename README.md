@@ -36,7 +36,8 @@ Latest my terminal configurations :)
 - `topic/completion.zsh` — 가장 나중에 로드 (자동완성)
 - `topic/*.symlink` — `script/bootstrap` 실행 시 `~/.<이름>`으로 심링크
 - `bin/` — `$PATH`에 추가됨
-- `config/<앱>` — `~/.config/<앱>`으로 심링크 (수동 또는 bootstrap)
+- `config/<앱>` — `script/bootstrap` 실행 시 `~/.config/<앱>`으로 심링크
+  (herdr는 `config.toml`만 링크 — 세션/로그는 로컬에 유지)
 - 비밀 환경변수는 `~/.localrc`에 (repo 밖)
 - git 커밋 신원은 gitignore된 `git/gitconfig.local.symlink`에서 관리 —
   기본 신원 + 원격 org별 `includeIf`로 계정 자동 전환
@@ -49,13 +50,7 @@ Latest my terminal configurations :)
 ```sh
 git clone https://github.com/Verssae/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap        # dotfile 심링크, Brewfile 패키지, macOS 기본값 적용
-
-mkdir -p ~/.config/herdr
-ln -s ~/.dotfiles/config/nvim ~/.config/nvim
-ln -s ~/.dotfiles/config/ghostty ~/.config/ghostty
-ln -s ~/.dotfiles/config/starship.toml ~/.config/starship.toml
-ln -s ~/.dotfiles/config/herdr/config.toml ~/.config/herdr/config.toml
+script/bootstrap        # 점파일·~/.config 심링크, Brewfile 패키지, macOS 기본값 적용
 
 herdr integration install claude
 herdr integration install codex
