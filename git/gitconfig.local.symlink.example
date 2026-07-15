@@ -1,5 +1,12 @@
+# ~/.gitconfig.local — 신원 정보는 repo에 커밋하지 않는다
+# 기본 신원
 [user]
-        name = AUTHORNAME
-        email = AUTHOREMAIL
-[credential]
-        helper = GIT_CREDENTIAL_HELPER
+	name = AUTHORNAME
+	email = AUTHOREMAIL
+
+# 특정 org 원격을 가진 repo에서 다른 신원 사용 (git >= 2.36)
+# 대상 파일(예: gitconfig.ORG.symlink)도 .gitignore에 추가할 것
+[includeIf "hasconfig:remote.*.url:https://github.com/ORGNAME/**"]
+	path = ~/.gitconfig.ORGNAME
+[includeIf "hasconfig:remote.*.url:git@github.com:ORGNAME/**"]
+	path = ~/.gitconfig.ORGNAME

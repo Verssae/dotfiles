@@ -39,9 +39,6 @@
 
 [init]
 	defaultBranch = main
-[user]
-	name = Hansae Ju
-	email = sparky@hanyang.ac.kr
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential

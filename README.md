@@ -38,6 +38,9 @@ Latest my terminal configurations :)
 - `bin/` — `$PATH`에 추가됨
 - `config/<앱>` — `~/.config/<앱>`으로 심링크 (수동 또는 bootstrap)
 - 비밀 환경변수는 `~/.localrc`에 (repo 밖)
+- git 커밋 신원은 gitignore된 `git/gitconfig.local.symlink`에서 관리 —
+  기본 신원 + 원격 org별 `includeIf`로 계정 자동 전환
+  (`gitconfig.local.symlink.example` 참고)
 
 ## 새 머신 설치
 

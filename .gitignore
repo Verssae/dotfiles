@@ -1,3 +1,4 @@
 git/gitconfig.local.symlink
+git/gitconfig.ineeji.symlink
 Brewfile.lock.json
 *.bak
