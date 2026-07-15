@@ -18,9 +18,10 @@ brew 'node'
 
 # tools
 brew 'gh'
+brew 'herdr'
 brew 'wget'
 brew 'imagemagick'
 
-cask 'kitty'
+cask 'ghostty'
 cask 'font-maple-mono-nf'
 cask '1password'

@@ -1,19 +1,35 @@
 # dotfiles
 
-내 macOS 환경 설정. [holman/dotfiles](https://github.com/holman/dotfiles)의
-topic 구조를 기반으로 시작해서, 안 쓰는 것들을 걷어내고 내 환경에 맞게 정리했다.
+Latest my terminal configurations :)
 
 ## 구성
 
-- **zsh** — starship 프롬프트, fzf/fzf-tab, autosuggestions, syntax-highlighting
-- **nvim** — [LazyVim](https://www.lazyvim.org) 기반. `config/nvim/`에 있고
-  `~/.config/nvim`으로 심링크됨. [Maple](https://github.com/subframe7536/vscode-theme-maple)
-  테마(mapledark.nvim, kitty도 같은 팔레트), markdown 인라인 렌더링 + 브라우저 프리뷰 포함
-- **git** — gitconfig, gitignore, 별칭들
-- **kitty** — 터미널. `config/kitty/`에 있고 `~/.config/kitty`로 심링크됨.
-  Maple Dark 테마(nvim과 동일 팔레트), Stork Mono + Maple Mono NF(아이콘) 폰트
+- **터미널**
+  - **[Ghostty](https://ghostty.org/)** —
+    [Maple Dark](https://github.com/subframe7536/vscode-theme-maple) 팔레트,
+    로컬 제작 Stork Mono + [Maple Mono NF](https://font.subf.dev/en/download/)(아이콘) 폰트
+  - **[Herdr](https://herdr.dev/)** — AI 코딩 에이전트용 터미널 워크스페이스
+    - UI: 에이전트 패널을 space 기준 정렬, 알림을 현재 터미널에 표시
+    - 연동: [Claude Code](https://code.claude.com/docs/en/quickstart),
+      [Codex](https://learn.chatgpt.com/docs/codex/cli),
+      [Hermes](https://hermes-agent.nousresearch.com/)
+      (`herdr integration install ...`로 설치)
+    - `config.toml`만 관리하며 세션과 로그는 `~/.config/herdr/`에 로컬로 유지
+- **셸 ([zsh](https://www.zsh.org/))**
+  - 프롬프트: [starship](https://starship.rs/)
+  - 플러그인: [fzf](https://github.com/junegunn/fzf)/[fzf-tab](https://github.com/Aloxaf/fzf-tab),
+    [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions),
+    [history-substring-search](https://github.com/zsh-users/zsh-history-substring-search),
+    [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- **에디터 ([nvim](https://neovim.io/))** — [LazyVim](https://www.lazyvim.org) 기반
+  - [Extras](https://www.lazyvim.org/extras): Git, JSON, Markdown, Python, TypeScript, YAML
+  - 테마: [Maple Dark](https://github.com/subframe7536/vscode-theme-maple)
+  - Markdown: [`render-markdown.nvim`](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+    인라인 렌더링, [`live-preview.nvim`](https://github.com/brianhuster/live-preview.nvim)
+    브라우저 프리뷰
+- **[git](https://git-scm.com/)** — 전역 gitconfig/gitignore와 별칭
 
-## 규칙 (holman 방식)
+## 규칙 ([holman/dotfiles](https://github.com/holman/dotfiles) 방식)
 
 - `topic/*.zsh` — 셸 시작 시 자동 로드
 - `topic/path.zsh` — 가장 먼저 로드 (PATH 설정)
@@ -25,19 +41,29 @@ topic 구조를 기반으로 시작해서, 안 쓰는 것들을 걷어내고 내
 
 ## 새 머신 설치
 
+기존 설정 파일이 있으면 먼저 백업한다.
+
 ```sh
-git clone <this-repo> ~/.dotfiles
+git clone https://github.com/Verssae/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap        # symlink 생성
-brew bundle             # Brewfile 설치
+script/bootstrap        # dotfile 심링크, Brewfile 패키지, macOS 기본값 적용
+
+mkdir -p ~/.config/herdr
 ln -s ~/.dotfiles/config/nvim ~/.config/nvim
-ln -s ~/.dotfiles/config/kitty ~/.config/kitty
+ln -s ~/.dotfiles/config/ghostty ~/.config/ghostty
 ln -s ~/.dotfiles/config/starship.toml ~/.config/starship.toml
+ln -s ~/.dotfiles/config/herdr/config.toml ~/.config/herdr/config.toml
+
+herdr integration install claude
+herdr integration install codex
+exec zsh
 ```
+
+`script/bootstrap` 실행 중 Git 이름·이메일과 기존 파일 처리 방식을 묻는다.
 
 ## nvim 유지보수
 
 - 플러그인 업데이트: `:Lazy sync` (버전은 `lazy-lock.json`에 고정됨 — 커밋해둘 것)
-- LazyVim 기능 켜고 끄기: `:LazyExtras`
+- [LazyVim Extras](https://www.lazyvim.org/extras) 켜고 끄기: `:LazyExtras`
 - 커스텀 설정: `config/nvim/lua/config/*.lua` (options/keymaps/autocmds),
   플러그인 추가/오버라이드: `config/nvim/lua/plugins/*.lua`

@@ -1,0 +1,38 @@
+# Maple Dark
+# upstream: https://github.com/subframe7536/vscode-theme-maple
+# kitty current-theme.conf (mapledark.nvim 팔레트, bg #1a1a1b) 포트
+
+background = #1a1a1b
+foreground = #cbd5e1
+
+selection-background = #2a2a2b
+
+cursor-color = #8d9db4
+cursor-text = #1a1a1b
+
+split-divider-color = #8fc7ff
+
+# black
+palette = 0=#333333
+palette = 8=#666666
+# red
+palette = 1=#edabab
+palette = 9=#ffc4c4
+# green
+palette = 2=#a4dfae
+palette = 10=#bdf8c7
+# yellow
+palette = 3=#eecfa0
+palette = 11=#ffe8b9
+# blue
+palette = 4=#8fc7ff
+palette = 12=#a8e0ff
+# magenta
+palette = 5=#d2ccff
+palette = 13=#ebe5ff
+# cyan
+palette = 6=#a1e8e5
+palette = 14=#bafffe
+# white
+palette = 7=#f3f2f2
+palette = 15=#ffffff
