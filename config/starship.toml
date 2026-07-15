@@ -1,0 +1,117 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 3000
+
+format = '$all'
+
+
+#[character]
+#format = '$symbol '
+#success_symbol = '[⋊](bold green)'
+#error_symbol = '[⋊](bold red)'
+#vimcmd_symbol = '[⋉](bold green)'
+#vimcmd_visual_symbol = '[⋉](bold yellow)'
+#vimcmd_replace_symbol = '[⋉](bold purple)'
+#vimcmd_replace_one_symbol = '[⋉](bold purple)'
+#disabled = false
+# original symbole: ❯
+
+[hostname]
+ssh_only = true
+ssh_symbol = '🌐 '
+trim_at = '.'
+format = '[$ssh_symbol]($style)'
+style = 'green dimmed bold'
+disabled = false
+
+[username]
+format = '[$user]($style) at '
+style_root = 'red bold'
+style_user = 'yellow bold'
+show_always = false
+disabled = false
+
+[shlvl]
+threshold = 2
+format = '[$symbol$shlvl]($style)'
+symbol = '↕️  '
+repeat = false
+style = 'bold yellow'
+disabled = true
+
+[localip]
+ssh_only = true
+format = '[$localipv4]($style)'
+style = 'yellow bold'
+disabled = true
+
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+format = "[$path]($style) "
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[rust]
+symbol = " "
