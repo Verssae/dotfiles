@@ -1,6 +1,8 @@
 The MIT License
 
+Copyright (c) 2026 Hansae Ju
 Copyright (c) Zach Holman, http://zachholman.com
+(bootstrap script and topic structure derived from https://github.com/holman/dotfiles)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
