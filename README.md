@@ -71,6 +71,46 @@ herdr integration install codex
 exec zsh
 ```
 
+## Windows (PowerShell 7)
+
+셸 설정은 `powershell/profile.ps1` 한 파일 — zshrc 대응(별칭·PATH·함수·히스토리·
+fzf·프롬프트 전부). 설치 자동화 스크립트는 없다. 아래를 참고해 필요한 것만 깔면
+되고, 코딩 에이전트에게 시켜도 된다.
+
+- 셸: [PowerShell 7](https://aka.ms/powershell), 프롬프트 [starship](https://starship.rs/),
+  히스토리/예측 [PSReadLine](https://github.com/PowerShell/PSReadLine)(기본 포함),
+  fzf 연동 [PSFzf](https://github.com/kelleyma49/PSFzf)
+- 터미널: [Windows Terminal](https://aka.ms/terminal) (Ghostty 대응) — 폰트 Stork Mono,
+  스킴 Maple Dark 를 수동 설정
+
+```powershell
+# 패키지 ([scoop](https://scoop.sh) 기준. fd/lazygit 등 일부는 winget 도 가능)
+scoop install starship eza fzf ripgrep fd lazygit gh neovim nodejs
+Install-Module PSFzf -Scope CurrentUser
+
+# 프로필 로더 — $PROFILE 에서 repo 프로필을 dot-source 한다.
+# (Windows 문서 폴더가 OneDrive 로 리다이렉트되면 심링크가 깨지기 쉬우므로 로더 방식)
+$pf = $PROFILE.CurrentUserAllHosts
+$loader = ". `"$((Resolve-Path .\powershell\profile.ps1).Path)`""
+New-Item -ItemType Directory -Force -Path (Split-Path $pf) | Out-Null   # 부모 폴더 보장(기존 파일은 안 건드림)
+if ((Get-Content $pf -Raw -EA SilentlyContinue) -notmatch 'dotfiles.powershell.profile') {
+  Add-Content -Path $pf -Value $loader
+}
+
+# config 심링크 (nvim 은 ~/.config 이 아니라 %LOCALAPPDATA%)
+New-Item -ItemType SymbolicLink -Force -Path "$env:LOCALAPPDATA\nvim"         -Target (Resolve-Path .\config\nvim)
+New-Item -ItemType SymbolicLink -Force -Path "$HOME\.config\starship.toml"    -Target (Resolve-Path .\config\starship.toml)
+New-Item -ItemType SymbolicLink -Force -Path "$env:APPDATA\herdr\config.toml" -Target (Resolve-Path .\config\herdr\config.toml)
+
+# 비밀 환경변수는 ~/.localrc.ps1 에 (repo 밖, macOS ~/.localrc 대응)
+```
+
+- git 신원/자격증명은 Windows에선 `git config --global` + credential helper
+  `manager`(또는 `gh auth setup-git`)로 관리한다. macOS용 `git/gitconfig.symlink`는
+  `osxkeychain`을 쓰므로 **링크하지 않는다**.
+- SSH 로 이 PC에 접속하면 프로필이 starship/fzf 를 건너뛰고 기본 프롬프트로
+  폴백한다 — scoop/winget 링크가 SSH 세션에서 통과가 막혀 실행이 깨지기 때문.
+
 ## nvim 유지보수
 
 - 플러그인 업데이트: `:Lazy sync` (버전은 `lazy-lock.json`에 고정됨 — 커밋해둘 것)
