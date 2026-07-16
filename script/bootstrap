@@ -163,12 +163,16 @@ setup_gitconfig
 install_dotfiles
 setup_config
 
-# If we're on a Mac, let's install and setup homebrew.
+# Brewfile 패키지 설치
 if [ "$(uname -s)" == "Darwin" ]
 then
-  info "installing dependencies"
-  # 파이프로 감싸면 dot의 실패가 while의 종료 코드에 가려지므로 직접 실행한다
-  if "$DOTFILES_ROOT/bin/dot"
+  if ! command -v brew >/dev/null
+  then
+    fail "homebrew가 없다 — https://brew.sh 의 설치 명령을 먼저 실행할 것"
+  fi
+
+  info "brew bundle"
+  if brew bundle --file "$DOTFILES_ROOT/Brewfile"
   then
     success "dependencies installed"
   else

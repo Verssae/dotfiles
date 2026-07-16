@@ -29,15 +29,13 @@ Latest my terminal configurations :)
     브라우저 프리뷰
 - **[git](https://git-scm.com/)** — 전역 gitconfig/gitignore와 별칭
 
-## 규칙 ([holman/dotfiles](https://github.com/holman/dotfiles) 방식)
+## 규칙
 
-- `topic/*.zsh` — 셸 시작 시 자동 로드
-- `topic/path.zsh` — 가장 먼저 로드 (PATH 설정)
-- `topic/completion.zsh` — 가장 나중에 로드 (자동완성)
-- `topic/*.symlink` — `script/bootstrap` 실행 시 `~/.<이름>`으로 심링크
-- `bin/` — `$PATH`에 추가됨
+- 셸 설정은 `zsh/zshrc.symlink` 한 파일 (별칭·PATH·플러그인·프롬프트 전부)
+- `*.symlink` — `script/bootstrap` 실행 시 `~/.<이름>`으로 심링크
 - `config/<앱>` — `script/bootstrap` 실행 시 `~/.config/<앱>`으로 심링크
   (herdr는 `config.toml`만 링크 — 세션/로그는 로컬에 유지)
+- `functions/` — zsh autoload 함수 (`extract`, `gf`)와 컴플리션
 - 비밀 환경변수는 `~/.localrc`에 (repo 밖)
 - git 커밋 신원은 gitignore된 `git/gitconfig.local.symlink`에서 관리 —
   기본 신원 + 원격 org별 `includeIf`로 계정 자동 전환
@@ -50,7 +48,7 @@ Latest my terminal configurations :)
 ```sh
 git clone https://github.com/Verssae/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap        # 점파일·~/.config 심링크, Brewfile 패키지, macOS 기본값 적용
+script/bootstrap        # 점파일·~/.config 심링크, Brewfile 패키지 설치
 
 herdr integration install claude
 herdr integration install codex
