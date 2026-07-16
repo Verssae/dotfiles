@@ -32,8 +32,8 @@ Latest my terminal configurations :)
 ## 규칙
 
 - 셸 설정은 `zsh/zshrc.symlink` 한 파일 (별칭·PATH·플러그인·프롬프트 전부)
-- `*.symlink` — `script/bootstrap` 실행 시 `~/.<이름>`으로 심링크
-- `config/<앱>` — `script/bootstrap` 실행 시 `~/.config/<앱>`으로 심링크
+- `*.symlink` — `~/.<이름>`으로 심링크해서 쓰는 파일
+- `config/<앱>` — `~/.config/<앱>`으로 심링크
   (herdr는 `config.toml`만 링크 — 세션/로그는 로컬에 유지)
 - `functions/` — zsh autoload 함수 (`extract`, `gf`)와 컴플리션
 - 비밀 환경변수는 `~/.localrc`에 (repo 밖)
@@ -43,19 +43,35 @@ Latest my terminal configurations :)
 
 ## 새 머신 설치
 
-기존 설정 파일이 있으면 먼저 백업한다.
+설치 스크립트는 없다 — 아래 블록이 전부라서, 직접 복붙하거나 AI 에이전트에게
+"README대로 세팅해줘"라고 하면 된다. 기존 설정 파일이 있으면 먼저 백업할 것.
+[homebrew](https://brew.sh)는 미리 설치돼 있어야 한다.
 
 ```sh
 git clone https://github.com/Verssae/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap        # 점파일·~/.config 심링크, Brewfile 패키지 설치
+
+# git 신원 — repo에 커밋되지 않는다. 이름/이메일은 본인 것으로.
+# 원격 org별 계정 자동 전환은 git/gitconfig.local.symlink.example 참고.
+printf '[user]\n\tname = <이름>\n\temail = <이메일>\n' > git/gitconfig.local.symlink
+
+# 점파일 심링크 (*.symlink → ~/.<이름>)
+for f in */*.symlink; do ln -s ~/.dotfiles/"$f" ~/."$(basename "${f%.symlink}")"; done
+
+# ~/.config 심링크 — herdr는 세션/로그가 로컬에 쌓이므로 config.toml만 링크한다
+mkdir -p ~/.config/herdr
+ln -s ~/.dotfiles/config/nvim ~/.config/nvim
+ln -s ~/.dotfiles/config/ghostty ~/.config/ghostty
+ln -s ~/.dotfiles/config/starship.toml ~/.config/starship.toml
+ln -s ~/.dotfiles/config/herdr/config.toml ~/.config/herdr/config.toml
+
+# 패키지
+brew bundle
 
 herdr integration install claude
 herdr integration install codex
 exec zsh
 ```
-
-`script/bootstrap` 실행 중 Git 이름·이메일과 기존 파일 처리 방식을 묻는다.
 
 ## nvim 유지보수
 
