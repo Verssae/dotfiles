@@ -7,12 +7,12 @@ Latest my terminal configurations :)
 - **터미널**
   - **[Ghostty](https://ghostty.org/)** —
     [Maple Dark](https://github.com/subframe7536/vscode-theme-maple) 팔레트,
-    로컬 제작 Stork Mono + [Maple Mono NF](https://font.subf.dev/en/download/)(아이콘) 폰트
+    로컬 제작 Stork Mono ([Maple Mono NF](https://font.subf.dev/en/download/) +
+    [Resource Han Rounded](https://github.com/CyanoHao/Resource-Han-Rounded) KR 병합) 폰트
   - **[Herdr](https://herdr.dev/)** — AI 코딩 에이전트용 터미널 워크스페이스
     - UI: 에이전트 패널을 space 기준 정렬, 알림을 현재 터미널에 표시
     - 연동: [Claude Code](https://code.claude.com/docs/en/quickstart),
       [Codex](https://learn.chatgpt.com/docs/codex/cli),
-      [Hermes](https://hermes-agent.nousresearch.com/)
       (`herdr integration install ...`로 설치)
     - `config.toml`만 관리하며 세션과 로그는 `~/.config/herdr/`에 로컬로 유지
 - **셸 ([zsh](https://www.zsh.org/))**
@@ -41,10 +41,8 @@ Latest my terminal configurations :)
   기본 신원 + 원격 org별 `includeIf`로 계정 자동 전환
   (`gitconfig.local.symlink.example` 참고)
 
-## 새 머신 설치
+## Install
 
-설치 스크립트는 없다 — 아래 블록이 전부라서, 직접 복붙하거나 AI 에이전트에게
-"README대로 세팅해줘"라고 하면 된다. 기존 설정 파일이 있으면 먼저 백업할 것.
 [homebrew](https://brew.sh)는 미리 설치돼 있어야 한다.
 
 ```sh
