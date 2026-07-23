@@ -87,8 +87,8 @@ function gf {
 # history / editing (zsh history + autosuggestions/substring-search 대응)
 # ------------------------------------------------------------------
 
-# PSReadLine 은 PowerShell 7 기본 포함. 대화형 콘솔에서만 설정한다.
-if ((Get-Module -ListAvailable -Name PSReadLine) -and $Host.Name -eq 'ConsoleHost') {
+# PSReadLine 은 PowerShell 7 기본 포함이므로 존재 확인 없이 대화형 콘솔 여부만 본다.
+if ($Host.Name -eq 'ConsoleHost') {
   Import-Module PSReadLine
 
   Set-PSReadLineOption -HistoryNoDuplicates
@@ -110,8 +110,10 @@ if ((Get-Module -ListAvailable -Name PSReadLine) -and $Host.Name -eq 'ConsoleHos
 # fzf / fzf-tab 대응 — PSFzf
 # ------------------------------------------------------------------
 
-if (-not $IsSshSession -and (Get-Module -ListAvailable -Name PSFzf) -and (Get-Command fzf -ErrorAction SilentlyContinue)) {
-  Import-Module PSFzf
+# Get-Module -ListAvailable 은 모듈 경로 전체를 디스크 스캔해 시작이 느려진다
+# (OneDrive 리다이렉트 환경에서 특히) — Import 시도 자체를 존재 확인으로 쓴다.
+if (-not $IsSshSession -and (Get-Command fzf -ErrorAction SilentlyContinue) -and
+    (Import-Module PSFzf -PassThru -ErrorAction SilentlyContinue)) {
   # Ctrl+t 파일 검색, Ctrl+r 히스토리 검색
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
   # 탭 완성을 fzf 로 (fzf-tab 유사)
